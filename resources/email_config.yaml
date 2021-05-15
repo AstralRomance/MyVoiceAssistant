@@ -1,0 +1,4 @@
+email: your_email@address
+password: your_password
+server: smtp_server
+port: 587 #SMTP PORT

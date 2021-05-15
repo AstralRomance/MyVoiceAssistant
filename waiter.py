@@ -14,9 +14,7 @@ class Waiter:
         while True:
             with self._recognizer:
                 text = self._recognizer.listen_micro()
-            print(text)
             current_time = datetime.now()
-            print((current_time - start_time).seconds)
             if self._is_phrase_equals_key_phrase(self._key_phrase, text):
                 break
             if wait_time and (current_time - start_time).seconds > wait_time:

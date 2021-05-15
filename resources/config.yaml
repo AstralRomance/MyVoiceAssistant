@@ -1,1 +1,74 @@
 dialog_timeout: 6 #seconds
+model: resources/model
+start_phrase: "привет дом"
+remote_recognizer:
+  language: ru-RU
+speaker:
+  language: ru
+note_folder: ./
+email_config: null
+
+messages:
+  skip:
+    to_voice:
+      - language: ru
+        text: давай пропустим
+  ready:
+    music:
+    - resources/music/signals/ready.mp3
+  to_whom:
+    to_voice:
+      - language: ru
+        text: кому отправить?
+  say_subject:
+    to_voice:
+      - language: ru
+        text: Скажи тему письма
+  say_email:
+    to_voice:
+      - language: ru
+        text: Скажи текст письма
+  email_send:
+    to_voice:
+      - language: ru
+        text: письмо отправлено
+  finish_command:
+    to_voice:
+      - language: ru
+        text: Сделано
+  bye:
+    to_voice:
+      - language: ru
+        text: Пока
+  command_not_found_error:
+    to_voice:
+      - language: ru
+        text: Не понимаю что делать
+  what_to_save_error:
+    to_voice:
+      - language: ru
+        text: А что сохранять?
+  empty_note_error:
+    to_voice:
+      - language: ru
+        text: Заметка пустая
+  could_save_only_notes_error:
+    to_voice:
+      - language: ru
+        text: Могу сохранять только заметки
+  configure_email_settings_error:
+    to_voice:
+      - language: ru
+        text: Пожалуйста настройте конфигурацию
+      - language: en
+        text: email
+  no_such_contact_error:
+    to_voice:
+      - language: ru
+        text: такой контакт не найден
+  no_contacts_error:
+    to_voice:
+      - language: ru
+        text: нет контактов
+
+
