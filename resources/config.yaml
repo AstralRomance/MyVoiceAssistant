@@ -36,6 +36,10 @@ messages:
     to_voice:
       - language: ru
         text: Сделано
+  write_note:
+    to_voice:
+      - language: ru
+        text: Записываю
   bye:
     to_voice:
       - language: ru

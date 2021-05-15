@@ -13,12 +13,12 @@ class RecognizerInterface():
 
 
 class RemoteRecognizer(speech_recognition.Recognizer, RecognizerInterface):
-    def __init__(self, language):
+    def __init__(self, language, phrase_timeout=1):
         super().__init__()
         self.my_micro = speech_recognition.Microphone()
         # Minimal number of seconds to recognize command.
         # Default 1 sec of silence for separate input phrases
-        self.phrase_timeout = 1
+        self.phrase_timeout = phrase_timeout
         self.pause_treshold = self.phrase_timeout
         self._language = language
 
