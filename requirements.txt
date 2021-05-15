@@ -16,3 +16,6 @@ SpeechRecognition==3.8.1
 urllib3==1.26.4
 vosk==0.3.27
 win32-setctime==1.0.3
+gTTS~=2.2.2
+playsound~=1.2.2
+PyYAML==5.4.1
