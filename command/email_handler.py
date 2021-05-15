@@ -23,5 +23,8 @@ class EmailSender:
         msg.set_content(msg_text)
         msg['Subject'] = title
         msg['From'] = self._email
-        msg['To'] = to_email
+        receiver = to_email
+        if type(to_email) == list:
+            receiver = ",".join(to_email)
+        msg['To'] = receiver
         return msg

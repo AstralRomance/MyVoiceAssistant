@@ -53,7 +53,7 @@ class LocalRecognizer(RecognizerInterface):
             channels=1,
             rate=16000,
             input=True,
-            frames_per_buffer=16000
+            frames_per_buffer=8000
         )
         self._stream.start_stream()
 

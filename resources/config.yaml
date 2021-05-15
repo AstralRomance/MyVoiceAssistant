@@ -1,12 +1,12 @@
 dialog_timeout: 6 #seconds
 model: resources/model
-start_phrase: "привет дом"
+start_phrase: "дом"
 remote_recognizer:
   language: ru-RU
 speaker:
   language: ru
 note_folder: ./
-email_config: null
+email_config: resources/email_config.yaml
 
 messages:
   skip:

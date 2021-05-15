@@ -26,5 +26,4 @@ if __name__ == '__main__':
                 start_time = datetime.now()
             if text:
                 command_executor.handle_command(text)
-                say_to_user('finish_command')
         say_to_user('bye')

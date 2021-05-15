@@ -69,7 +69,7 @@ def skip_command(ign):
 SENDER = None
 
 if config.EMAIL_CONFIG:
-    SENDER = EmailSender(config.EMAIL_CONFIG[config.EMAIL_KEY], config.EMAIL_CONFIG_KEY[config.PASSWORD_KEY],
+    SENDER = EmailSender(config.EMAIL_CONFIG[config.EMAIL_KEY], config.EMAIL_CONFIG[config.PASSWORD_KEY],
                          config.EMAIL_CONFIG[config.SERVER_KEY], config.EMAIL_CONFIG[config.PORT_KEY])
 
 
@@ -88,7 +88,7 @@ def email_command(full_command):
         say_to_user('configure_email_settings_error')
         return
     say_to_user('to_whom')
-    rec = RemoteRecognizer(config.CONFIG[config.LANGUAGE_KEY])
+    rec = RemoteRecognizer(config.CONFIG[config.REMOTE_RECOGNIZER_KEY][config.LANGUAGE_KEY])
     text = listen_data()
     if config.EMAIL_CONFIG.get(config.CONTACTS_KEY):
         contact = config.EMAIL_CONFIG[config.CONTACTS_KEY].get(text)
