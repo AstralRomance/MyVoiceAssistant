@@ -13,25 +13,25 @@ class RecognizerInterface():
 
 
 class RemoteRecognizer(speech_recognition.Recognizer, RecognizerInterface):
-    def __init__(self):
+    def __init__(self, language, phrase_timeout=1):
         super().__init__()
         self.my_micro = speech_recognition.Microphone()
         # Minimal number of seconds to recognize command.
         # Default 1 sec of silence for separate input phrases
-        self.phrase_timeout = 1
+        self.phrase_timeout = phrase_timeout
         self.pause_treshold = self.phrase_timeout
+        self._language = language
 
     def listen_micro(self):
         with self.my_micro as audio_input:
-            print('Say command')
             self.adjust_for_ambient_noise(audio_input)
             try:
                 audio = self.listen(audio_input, timeout=2)
             except:
                 return ""
         try:
-            recognized_text = self.recognize_google(audio, language='ru-RU')
-            print(f'Recognized command {recognized_text}')
+            recognized_text = self.recognize_google(audio, language=self._language)
+            logger.debug(f'Recognized command {recognized_text}')
             if (recognized_text == '') or (recognized_text is None):
                 return ""
         except speech_recognition.UnknownValueError as e:
@@ -42,8 +42,8 @@ class RemoteRecognizer(speech_recognition.Recognizer, RecognizerInterface):
 
 class LocalRecognizer(RecognizerInterface):
 
-    def __init__(self):
-        self._model = Model('resources/model')  # полный путь к модели
+    def __init__(self, model_path):
+        self._model = Model(model_path)  # полный путь к модели
         self._recognizer = KaldiRecognizer(self._model, 16000)
 
     def __enter__(self):
@@ -53,7 +53,7 @@ class LocalRecognizer(RecognizerInterface):
             channels=1,
             rate=16000,
             input=True,
-            frames_per_buffer=16000
+            frames_per_buffer=8000
         )
         self._stream.start_stream()
 

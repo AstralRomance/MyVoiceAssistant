@@ -1,0 +1,5 @@
+email: your@emai
+password: pasword
+server: smtp.yandex.ru #SMTP server
+port: 587 #SMTP PORT
+contacts:
